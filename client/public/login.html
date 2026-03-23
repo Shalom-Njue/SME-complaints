@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login Page</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container" style="max-width: 450px; margin-top: 80px;">
+        <div class="card">
+            <div class="card-header" style="text-align: center; background: var(--primary-color); color: white;">
+                <h1 style="margin: 0; font-size: 24px; color: white;">🔐 Admin Login</h1>
+            </div>
+            <div class="card-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="admin@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px;">Login</button>
+                </form>
+                <div id="message" style="margin-top: 15px;"></div>
+            </div>
+            <div class="card-footer" style="text-align: center;">
+                <a href="index.html" class="btn btn-secondary btn-sm">&larr; Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+
+            try {
+                messageDiv.innerHTML = '<div class="loading-indicator">Logging in...</div>';
+                
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    const data = await response.json();
+                    if (response.ok) {
+                        messageDiv.innerHTML = '<div class="alert alert-success">Login successful! Redirecting...</div>';
+                        setTimeout(() => {
+                            window.location.href = 'admin.html';
+                        }, 1000);
+                    } else {
+                        messageDiv.innerHTML = `<div class="alert alert-error">${data.message || 'Invalid credentials'}</div>`;
+                    }
+                } else {
+                    const text = await response.text();
+                    console.error('Server Error:', text);
+                    messageDiv.innerHTML = '<div class="alert alert-error">Server error. Check console for details.</div>';
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                messageDiv.innerHTML = '<div class="alert alert-error">An error occurred. Please try again.</div>';
+            }
+        });
+    </script>
+</body>
+</html>

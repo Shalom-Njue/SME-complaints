@@ -1,0 +1,259 @@
+/* ============================================
+   RESPONSIVE STYLES
+   Mobile and tablet adaptations
+   ============================================ */
+
+/* ============================================
+   TABLET (max-width: 900px)
+   ============================================ */
+@media (max-width: 900px) {
+    /* Grid adjustments */
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Features grid */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Stats grid */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Container adjustments */
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+/* ============================================
+   MOBILE (max-width: 600px)
+   ============================================ */
+@media (max-width: 600px) {
+    /* Container adjustments */
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .container-narrow {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    /* Grid adjustments - stack vertically */
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Features grid - single column */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Benefits list - single column */
+    .benefits-list {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stats grid - single column */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Navigation - stack vertically */
+    .navbar .container {
+        flex-direction: column;
+        gap: var(--space-md);
+        padding: var(--space-md);
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: var(--space-sm);
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Hero section adjustments */
+    .hero-section {
+        padding: var(--space-xl) var(--space-md);
+    }
+    
+    .hero-section h1 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-actions .btn {
+        width: 100%;
+    }
+    
+    /* Table responsive layout */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+    }
+    
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+    
+    /* Chat modal mobile sizing */
+    #chatModal, .chat-modal {
+        width: calc(100% - 20px);
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+    
+    .chat-messages {
+        height: 250px;
+    }
+    
+    /* Touch-friendly button sizing (minimum 44x44px) */
+    button, .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+    }
+    
+    .btn-sm {
+        min-height: 44px;
+        padding: 10px 16px;
+    }
+    
+    /* Touch-friendly input sizing */
+    input, select, textarea {
+        min-height: 44px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Touch-friendly links */
+    a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .nav-links a {
+        padding: var(--space-sm) var(--space-md);
+    }
+    
+    /* Tab buttons */
+    .tab-buttons {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        min-height: 44px;
+    }
+    
+    /* Modal adjustments */
+    .modal-content {
+        width: 95%;
+        margin: var(--space-md);
+    }
+    
+    /* Admin header */
+    .admin-header {
+        margin: -15px -15px var(--space-md) -15px;
+        padding: var(--space-md);
+    }
+    
+    /* Typography adjustments */
+    h1 {
+        font-size: var(--font-size-xl);
+    }
+    
+    h2 {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Section padding */
+    .section {
+        padding: var(--space-xl) var(--space-md);
+    }
+    
+    /* Footer */
+    .footer {
+        padding: var(--space-lg) var(--space-md);
+    }
+}
+
+/* ============================================
+   SMALL MOBILE (max-width: 400px)
+   ============================================ */
+@media (max-width: 400px) {
+    .hero-section h1 {
+        font-size: var(--font-size-lg);
+    }
+    
+    .stat-number {
+        font-size: var(--font-size-xl);
+    }
+    
+    .feature-icon {
+        font-size: 36px;
+    }
+}
+
+    /* Toast notifications on mobile */
+    .toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    .toast {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .toast-message {
+        font-size: 13px;
+    }

@@ -1,0 +1,137 @@
+:root {
+    --primary-color: #2c3e50; /* Professional Navy */
+    --accent-color: #27ae60;  /* Success Green */
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+h1, h2 { color: var(--primary-color); }
+
+/* Forms */
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+button:hover { background-color: #1a252f; }
+
+/* Status Badges */
+.status-Pending { background-color: #f39c12; color: white; padding: 4px 8px; border-radius: 4px; }
+.status-In { background-color: #3498db; color: white; padding: 4px 8px; border-radius: 4px; } /* In Progress */
+.status-Resolved { background-color: var(--accent-color); color: white; padding: 4px 8px; border-radius: 4px; }
+
+/* Table for Admin */
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+th { background-color: var(--primary-color); color: white; }
+
+/* Tabs */
+.tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+.tab-btn { background: #ddd; color: black; }
+.tab-btn.active { background: var(--primary-color); color: white; }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container { margin: 10px; padding: 15px; }
+    table, thead, tbody, th, td, tr { display: block; }
+    tr { margin-bottom: 15px; border: 1px solid #ddd; }
+}
+
+/* Chat Modal Styling */
+#chatModal {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    display: flex; /* Hidden by default via JS */
+    flex-direction: column;
+}
+
+.chat-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    font-size: 14px;
+}
+
+.message.Customer {
+    background: #e1f5fe; /* Light Blue for Customer */
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.message.Admin {
+    background: #dcedc8; /* Light Green for Admin */
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+}
+
+.chat-input-area input { flex: 1; margin-right: 5px; }

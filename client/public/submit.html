@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Page</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="container">
+        <header>
+            <h1>Customer Support Portal</h1>
+            <p>We value your feedback. Please submit your complaint below.</p>
+            <a href="index.html" class="btn btn-secondary btn-sm" style="margin-top: 10px;">&larr; Back to Home</a>
+        </header>
+
+        <div id="submit-section">
+            <div class="card">
+                <div class="card-body">
+                    <h2 style="margin-bottom: 20px; color: var(--primary-color);">Submit Your Complaint</h2>
+                    <form id="complaintForm">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" id="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="text" id="phone" class="form-input" placeholder="e.g., 0712345678 or +254712345678" required>
+                            <small style="color: var(--text-light); font-size: 13px;">Kenyan format: 07XXXXXXXX or +2547XXXXXXXX</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category *</label>
+                            <select id="category" class="form-select">
+                                <option value="">-- Select a category --</option>
+                                <option value="Service Delivery">Service Delivery</option>
+                                <option value="Product Quality">Product Quality</option>
+                                <option value="Billing / Payment">Billing / Payment Issues</option>
+                                <option value="Delivery Delays">Delivery Delays</option>
+                                <option value="Wrong or Missing Items">Wrong or Missing Items</option>
+                                <option value="Refunds & Returns">Refunds & Returns</option>
+                                <option value="Customer Service / Staff Conduct">Customer Service / Staff Conduct</option>
+                                <option value="Technical / System Issues">Technical / System Issues</option>
+                                <option value="Pricing Issues">Pricing Issues</option>
+                                <option value="Warranty / Repairs">Warranty / Repairs</option>
+                                <option value="Communication Issues">Communication Issues</option>
+                                <option value="Other">Other (Specify)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Description *</label>
+                            <textarea id="description" class="form-textarea" rows="5" placeholder="Please describe your complaint in detail (minimum 10 characters)" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Complaint</button>
+                    </form>
+                </div>
+            </div>
+            <div id="submissionMessage" style="margin-top: 15px;"></div>
+        </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

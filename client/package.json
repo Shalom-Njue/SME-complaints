@@ -1,0 +1,8 @@
+{
+  "name": "sme-complaint-management-client",
+  "version": "1.0.0",
+  "description": "SME Complaint Management System - Frontend",
+  "private": true,
+  "author": "",
+  "license": "ISC"
+}

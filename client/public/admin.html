@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <div class="container" style="max-width: 1200px">
+      <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <h1 style="margin-bottom: 5px;">Admin Dashboard</h1>
+          <p style="color: var(--text-light); margin: 0;">Manage and resolve customer complaints</p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="analytics.html" style="text-decoration: none;">
+            <button class="btn btn-secondary">📊 Analytics</button>
+          </a>
+          <button onclick="loadComplaints()" class="btn btn-primary">🔄 Refresh</button>
+          <button onclick="window.location.href = 'index.html'" class="btn btn-danger">
+            🚪 Logout
+          </button>
+        </div>
+      </header>
+
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-body">
+          <div class="form-group" style="margin-bottom: 0;">
+            <input
+              type="text"
+              id="adminSearch"
+              class="form-input"
+              onkeyup="filterComplaints()"
+              placeholder="🔍 Search by ID or Customer Name..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 20px;">
+        <div style="overflow-x: auto;">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="complaintTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="resolveModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 style="margin: 0;">Resolve Complaint <span id="modalId"></span></h2>
+          <button onclick="closeModal()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-light);">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="background: var(--bg-color); padding: 15px; border-radius: var(--radius-sm); margin-bottom: 20px;">
+            <strong>Issue:</strong><br>
+            <span id="modalDesc" style="color: var(--text-color);"></span>
+          </p>
+          <div class="form-group">
+            <label class="form-label">Update Status</label>
+            <select id="updateStatus" class="form-select">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Admin Response</label>
+            <textarea id="adminResponse" class="form-textarea" rows="4" placeholder="Enter your response to the customer..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal()" class="btn btn-secondary">Cancel</button>
+          <button onclick="submitUpdate()" class="btn btn-success">💾 Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="chatModal" style="display: none; flex-direction: column">
+      <div class="chat-header">
+        <span id="chatTitle">Chat</span>
+        <button
+          onclick="closeChat()"
+          style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;"
+        >
+          ✕
+        </button>
+      </div>
+      <div id="chatMessages" class="chat-messages"></div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" class="form-input" placeholder="Type a message..." />
+        <button onclick="sendMessage()" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      // Load data on page load
+      document.addEventListener("DOMContentLoaded", loadComplaints);
+    </script>
+  </body>
+</html>

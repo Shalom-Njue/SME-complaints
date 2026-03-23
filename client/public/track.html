@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tracking Page</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Track Complaint Status</h1>
+        <a href="index.html" class="btn btn-secondary btn-sm" style="margin-top: 10px;">&larr; Back to Home</a>
+      </header>
+      
+      <div id="track-section">
+        <div class="card">
+          <div class="card-body">
+            <h2 style="margin-bottom: 20px; color: var(--primary-color);">Enter Your Ticket ID</h2>
+            <div class="form-group">
+              <label class="form-label">Complaint ID</label>
+              <input type="text" id="trackId" class="form-input" placeholder="e.g., C-1234" />
+            </div>
+            <button onclick="trackComplaint()" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px">
+              🔍 Track Status
+            </button>
+          </div>
+        </div>
+        <div id="trackResult"></div>
+      </div>
+    </div>
+    <div id="chatModal" style="display: none; flex-direction: column">
+      <div class="chat-header">
+        <span id="chatTitle">Chat</span>
+        <button
+          onclick="closeChat()"
+          style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;"
+        >
+          ✕
+        </button>
+      </div>
+      <div id="chatMessages" class="chat-messages"></div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" class="form-input" placeholder="Type a message..." />
+        <button onclick="sendMessage()" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

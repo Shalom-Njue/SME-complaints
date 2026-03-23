@@ -1,0 +1,6 @@
+.kiro/
+
+# Test files
+client/public/test-*.html
+server/migrate-*.js
+server/test-*.js

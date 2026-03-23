@@ -1,0 +1,17 @@
+{
+  "name": "sme-complaint-management",
+  "version": "1.0.0",
+  "description": "SME Complaint Management System - Full Stack Application",
+  "scripts": {
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "complaint",
+    "management",
+    "SME"
+  ],
+  "author": "",
+  "license": "ISC"
+}
